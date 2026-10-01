@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrustPage AI — Your EU buyer is asking about AI Act compliance. Send them a page.</title>
+<meta name="description" content="Article 50 of the EU AI Act applies since 2 August 2026. Get a public, defensible AI-compliance page and a ready-made answer pack for the questionnaires that now gate EU deals. From $49/month. 2 hours, this week.">
+<style>
+:root{--bg:#101418;--card:#161c22;--line:#26303a;--fg:#e8edf2;--mut:#9aa7b4;--acc:#ff8a3d;--ok:#3ddc97;--bad:#ff5d5d}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55;overflow-x:hidden}
+main{max-width:960px;margin:0 auto;padding:24px 18px 60px}
+header{text-align:center;padding:34px 0 8px}
+.eyebrow{display:inline-block;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:700;border:1px solid rgba(255,138,61,.35);border-radius:20px;padding:5px 14px;margin-bottom:10px}
+.logo{font-size:1.7rem;font-weight:800;letter-spacing:.5px}
+.logo span{color:var(--acc)}
+h1{font-size:1.9rem;line-height:1.25;margin:14px 0 10px}
+h2{font-size:1.4rem;margin:30px 0 10px}
+h3{font-size:1.1rem;margin:16px 0 6px}
+p{color:var(--mut);margin:8px 0}
+.sub{font-size:1.04rem;max-width:680px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0}
+.acc{color:var(--acc);font-weight:700}
+.ok{color:var(--ok)}
+.bad{color:var(--bad)}
+.cta{display:inline-block;background:var(--acc);color:#101418;font-weight:800;border-radius:9px;padding:14px 24px;text-decoration:none;margin:12px 6px 6px 0;font-size:1.02rem;box-shadow:0 4px 18px rgba(255,138,61,.22);transition:transform .15s, box-shadow .15s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(255,138,61,.38)}
+.cta.sec{background:transparent;border:1px solid var(--line);color:var(--fg);box-shadow:none}
+form{margin-top:14px}
+label{display:block;font-size:.9rem;color:var(--mut);margin:10px 0 4px}
+input,select{width:100%;background:#0d1116;border:1px solid var(--line);color:var(--fg);border-radius:8px;padding:10px 12px;font-size:1rem}
+button{background:var(--acc);color:#101418;border:none;border-radius:8px;padding:12px 18px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:12px}
+.hint{font-size:.82rem;color:var(--mut)}
+.step{display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:start;margin-top:16px}
+.step:first-child{margin-top:4px}
+.step .ico{width:56px;height:56px;border-radius:14px;background:#0d1116;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step b{display:block;color:var(--fg);margin-bottom:3px}
+.step span{font-size:.9rem;color:var(--mut)}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px 16px;margin:10px 0}
+.faq summary{font-weight:700;cursor:pointer}
+.faq p{margin-top:8px}
+.avis{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px 16px;margin:10px 0}
+.avis b{color:var(--fg)}
+.stars{color:#ffb400;letter-spacing:2px}
+footer{margin-top:40px;text-align:center;font-size:.82rem;color:var(--mut)}
+/* ——— démo : cartes, jamais de dépassement ——— */
+.optgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
+.opt{background:#0d1116;border:1px solid var(--line);border-radius:11px;padding:14px;cursor:pointer;transition:border-color .15s}
+.opt b{display:block;margin-bottom:4px;font-size:.95rem}
+.opt span{font-size:.8rem;color:var(--mut)}
+.opt.on{border-color:var(--acc);background:#201409}
+#risk-out{border:1px solid var(--acc);background:#201409;border-radius:12px;padding:16px;margin-top:16px;display:none;text-align:center}
+#risk-total{font-size:1.5rem}
+#risk-detail{font-size:.95rem;margin-top:6px;color:var(--mut);text-align:left}
+#risk-detail li{margin:5px 0 5px 18px}
+.badge{display:inline-block;background:#1a4d36;color:var(--ok);border:1px solid #2a6b4c;border-radius:20px;padding:4px 12px;font-size:.8rem;font-weight:700}
+/* ——— étoiles cliquables (avis clients) ——— */
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#3a4654;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid var(--acc);outline-offset:2px;border-radius:4px}
+/* ——— schémas (SVG authorés) ——— */
+.fig{border:1px solid var(--line);background:#0d1116;border-radius:14px;padding:8px;margin:18px 0 4px}
+.fig svg{width:100%;height:auto;display:block}
+.figcap{font-size:.78rem;color:var(--mut);text-align:center;margin:8px 0 2px}
+.herofig{margin:22px auto 6px;max-width:700px}
+/* ——— effets de scroll (progressive : tout reste visible sans JS) ——— */
+.rv{will-change:opacity,transform}
+@media(max-width:640px){h1{font-size:1.5rem}.optgrid{grid-template-columns:1fr}.step{grid-template-columns:48px 1fr;gap:12px}.step .ico{width:48px;height:48px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="eyebrow">EU AI Act · Article 50 in force · SaaS &amp; startups</div>
+  <div class="logo">Trust<span>Page</span> AI</div>
+  <h1>An EU buyer just asked about your AI compliance.<br>What do you send them?</h1>
+  <p class="sub">Since <b style="color:var(--fg)">2 August 2026</b>, Article 50 of the EU AI Act applies to any software with a chatbot, an AI assistant or AI-generated media touching the EU market — with fines up to <b style="color:var(--fg)">€15M or 3% of turnover</b>. Buyers now send an AI questionnaire before signing. <b style="color:var(--fg)">TrustPage gives you a public, defensible compliance page and a ready-made answer pack — this week.</b></p>
+
+  <div class="fig herofig rv">
+    <svg viewBox="0 0 700 240" role="img" aria-label="Schema: a buyer sends a 12-question AI Act questionnaire, the deal stalls, TrustPage turns it into a page plus an answer pack and the deal moves">
+      <rect width="700" height="240" rx="14" fill="#0b1016"/>
+      <rect width="700" height="240" rx="14" fill="none" stroke="#26303a"/>
+      <g font-family="Segoe UI,sans-serif">
+        <rect x="28" y="60" width="128" height="84" rx="10" fill="#161c22" stroke="#3a4654"/>
+        <text x="92" y="94" text-anchor="middle" font-size="22">🏢</text>
+        <text x="92" y="122" text-anchor="middle" font-size="11" fill="#9aa7b4">EU buyer</text>
+        <rect x="286" y="60" width="128" height="84" rx="10" fill="#161c22" stroke="#ff5d5d"/>
+        <text x="350" y="94" text-anchor="middle" font-size="22">📋</text>
+        <text x="350" y="122" text-anchor="middle" font-size="11" fill="#ff5d5d">12-question AI Act questionnaire · 10-day deadline</text>
+        <rect x="544" y="60" width="128" height="84" rx="10" fill="#161c22" stroke="#3a4654"/>
+        <text x="608" y="94" text-anchor="middle" font-size="22">🧑‍💻</text>
+        <text x="608" y="122" text-anchor="middle" font-size="11" fill="#9aa7b4">Your SaaS</text>
+      </g>
+      <path d="M156 102 L286 102" stroke="#ff5d5d" stroke-width="2" stroke-dasharray="6 5" fill="none"/>
+      <path d="M414 102 L544 102" stroke="#3a4654" stroke-width="2" stroke-dasharray="6 5" fill="none"/>
+      <text x="350" y="34" text-anchor="middle" font-size="12" font-weight="700" fill="#ff5d5d">deal stalls while you scramble for answers</text>
+      <rect x="128" y="172" width="444" height="46" rx="23" fill="#ff8a3d"/>
+      <text x="350" y="192" text-anchor="middle" font-size="13" font-weight="800" fill="#101418">TrustPage → hosted compliance page + answer pack</text>
+      <text x="350" y="210" text-anchor="middle" font-size="12" font-weight="800" fill="#101418">same deal, answered in 2 hours</text>
+    </svg>
+    <p class="figcap">The questionnaire is the new SOC 2: it gates the deal. The page and the pack are what unblocks it.</p>
+  </div>
+
+  <p class="rv"><a class="cta" href="#demo">Check my exposure — free</a> <a class="cta sec" href="#pricing">See pricing</a></p>
+</header>
+
+<div class="card rv">
+  <b>Concrete example</b>
+  <p>Your EU prospect (€12M revenue, procurement-run) sends the standard 12-question AI Act questionnaire with a <b style="color:var(--fg)">10-day deadline</b>. No public page, no answers ready. Your team spends a week digging between sales calls; the deal slips a quarter.</p>
+  <p>Then the other option: a law firm quotes <b style="color:var(--fg)">$40,000</b> to "get you compliant" — for a two-person team. A founder in the same situation posted that quote and walked away.</p>
+  <p class="acc">TrustPage: $49/month, 2 hours of intake, and the same deal now has a page to link and answers to paste. Founders who do this once save ~8 hours on every deal after.</p>
+</div>
+
+<h2>How it works</h2>
+<div class="card rv">
+  <div class="step">
+    <div class="ico">
+      <svg viewBox="0 0 48 48" width="34" height="34" role="img" aria-label="step 1: describe your product">
+        <rect x="8" y="10" width="32" height="28" rx="4" fill="none" stroke="#ff8a3d" stroke-width="2.4"/>
+        <path d="M8 18 L24 25 L40 18" fill="none" stroke="#ff8a3d" stroke-width="2.4"/>
+        <path d="M16 30 H 32" stroke="#9aa7b4" stroke-width="2.4"/>
+      </svg>
+    </div>
+    <div><b>1 · You describe your product</b><span>Stack, AI features (chatbot? generative output? emotion recognition?), data flows, EU markets. 15 minutes, nothing to install, no accounts to connect.</span></div>
+  </div>
+  <div class="step">
+    <div class="ico">
+      <svg viewBox="0 0 48 48" width="34" height="34" role="img" aria-label="step 2: TrustPage builds the pack">
+        <path d="M10 24 L20 34 L38 14" fill="none" stroke="#3ddc97" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div><b>2 · TrustPage builds your evidence</b><span>A short Article 50 compliance memo, your AI-system register, plain-language disclosure snippets, and a hosted public page — plus answer drafts mapped to the standard wording buyers use.</span></div>
+  </div>
+  <div class="step">
+    <div class="ico">
+      <svg viewBox="0 0 48 48" width="34" height="34" role="img" aria-label="step 3: you answer and link">
+        <rect x="8" y="8" width="32" height="32" rx="4" fill="none" stroke="#ff8a3d" stroke-width="2.4"/>
+        <path d="M16 20 L24 27 L34 15" fill="none" stroke="#3ddc97" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div><b>3 · You answer in minutes, everywhere</b><span>Paste the answers into the procurement questionnaire, add the page to your security reply, re-send the same pack on every deal. No more starting from zero.</span></div>
+  </div>
+</div>
+
+<div class="card rv">
+  <h2 style="margin-top:0">Free check — what do you owe an EU buyer?</h2>
+  <p class="hint">Tick what your product does and put your revenue in. The exposure estimate updates live — it's the number that shows up in every buyer questionnaire.</p>
+  <div class="optgrid">
+    <div class="opt on" id="o_chat" tabindex="0" role="checkbox" aria-checked="true">
+      <b>💬 AI chatbot or assistant</b><span>Interacts with users directly → Art. 50(1) disclosure duty</span>
+    </div>
+    <div class="opt on" id="o_gen" tabindex="0" role="checkbox" aria-checked="true">
+      <b>🎨 AI-generated images, audio or video</b><span>Provider marking duty, Art. 50(2) — machine-readable detection</span>
+    </div>
+    <div class="opt on" id="o_text" tabindex="0" role="checkbox" aria-checked="true">
+      <b>📰 AI-generated text on public-interest topics</b><span>Deployer disclosure, Art. 50(4) — news, health, finance content</span>
+    </div>
+    <div class="opt" id="o_emo" tabindex="0" role="checkbox" aria-checked="false">
+      <b>🧠 Emotion recognition or biometric categorisation</b><span>Informing duty for exposed people, Art. 50(3)</span>
+    </div>
+  </div>
+  <label for="rev">Your annual revenue (USD)</label>
+  <input id="rev" type="number" value="1200000" min="0" step="50000">
+  <label for="eu">Do you sell to or serve customers in the EU?</label>
+  <select id="eu">
+    <option value="1" selected>Yes</option>
+    <option value="0">No</option>
+  </select>
+  <div id="risk-out">
+    <div class="badge">Based on your answers</div>
+    <div class="bad" id="risk-total" style="font-size:1.4rem;margin-top:6px">—</div>
+    <p id="risk-detail" style="text-align:left"></p>
+    <p class="acc" style="margin-top:10px" id="risk-cta">—</p>
+  </div>
+</div>
+
+<div class="card rv">
+  <b>What you get every month</b>
+  <div class="fig">
+    <svg viewBox="0 0 700 210" role="img" aria-label="Four deliverables: public compliance page, Article 50 memo, AI-system register, questionnaire answer pack">
+      <rect width="700" height="210" rx="14" fill="#0b1016"/>
+      <g font-family="Segoe UI,sans-serif">
+        <rect x="26" y="36" width="150" height="62" rx="10" fill="#161c22" stroke="#3a4654"/>
+        <text x="101" y="62" text-anchor="middle" font-size="12" fill="#e8edf2">🌐 Hosted page</text>
+        <text x="101" y="82" text-anchor="middle" font-size="10.5" fill="#9aa7b4">yourbrand.trustpage.ai</text>
+        <rect x="188" y="36" width="150" height="62" rx="10" fill="#161c22" stroke="#3a4654"/>
+        <text x="263" y="62" text-anchor="middle" font-size="12" fill="#e8edf2">📄 Art. 50 memo</text>
+        <text x="263" y="82" text-anchor="middle" font-size="10.5" fill="#9aa7b4">plain language, 2 pages</text>
+        <rect x="350" y="36" width="150" height="62" rx="10" fill="#161c22" stroke="#3a4654"/>
+        <text x="425" y="62" text-anchor="middle" font-size="12" fill="#e8edf2">🗂️ System register</text>
+        <text x="425" y="82" text-anchor="middle" font-size="10.5" fill="#9aa7b4">model card style</text>
+        <rect x="512" y="36" width="150" height="62" rx="10" fill="#161c22" stroke="#3a4654"/>
+        <text x="587" y="62" text-anchor="middle" font-size="12" fill="#e8edf2">📨 Answer pack</text>
+        <text x="587" y="82" text-anchor="middle" font-size="10.5" fill="#9aa7b4">12–50 Q mapped</text>
+      </g>
+      <path d="M350 112 L350 132" stroke="#3a4654" stroke-width="2"/>
+      <rect x="196" y="134" width="308" height="42" rx="21" fill="#ff8a3d"/>
+      <text x="350" y="153" text-anchor="middle" font-size="14" font-weight="800" fill="#101418">one link for every security reply</text>
+      <text x="350" y="190" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3ddc97">+ disclosure snippets you can put in the product today</text>
+    </svg>
+    <p class="figcap">Every subscription ships the page, the memo, the register and the answer pack — kept current when the rules change.</p>
+  </div>
+  <p class="hint">The page is hosted for you (free plan carries a discreet "generated with TrustPage" mark). No infra, no legal team, no spreadsheet from a law blog.</p>
+</div>
+
+<h2 id="pricing">Pricing</h2>
+<div class="card rv">
+  <b>Free — $0</b>
+  <p>Hosted AI-compliance page for 1 system, watermarked. Enough to stop losing the first deals while you evaluate.</p>
+  <p><a class="cta sec" href="#start">Start with the free page</a></p>
+</div>
+<div class="card rv">
+  <b>Solo — $49/month</b>
+  <p>1 system: public page + subdomain, 2-page Article 50 memo, AI-system register, disclosure snippets, answer drafts for the standard questionnaires. Updated as guidance changes.</p>
+  <p class="hint">For reference: a GRC platform for a 12-person SaaS runs $5k–$40k/year, and one law-firm quote for the same paperwork was $40,000. The page + pack is what the deal actually needs.</p>
+  <p><a class="cta" href="https://buy.stripe.com/7sYaEQbC34i7g5H7fF3sI0s" rel="noopener" target="_blank">💳 Subscribe to Solo — $49/month</a></p>
+</div>
+<div class="card rv">
+  <b>Growth — $199/month</b>
+  <p>Up to 5 systems, questionnaire autofill, evidence-room link for procurement, quarterly refresh, and AI-literacy training records for your customer-facing team (Art. 4).</p>
+  <p><a class="cta" href="https://buy.stripe.com/14A9AM0XpeWLbPr8jJ3sI0t" rel="noopener" target="_blank">💳 Subscribe to Growth — $199/month</a></p>
+</div>
+<div class="card rv">
+  <b>Deal Sprint — $1,500–2,500, one time</b>
+  <p>Live procurement deadline and no time? A 5-day turnaround: your intake reviewed, the pack finished and the questionnaire filled before the deadline — positioned against the $40k firm quote.</p>
+  <p><a class="cta sec" href="mailto:nypsus.business@gmail.com?subject=Deal%20Sprint%20TrustPage&body=Hi%2C%0A%0AI%20need%20a%20Deal%20Sprint%20before%20my%20procurement%20deadline.%20Deadline%3A%20...%0A%0AQuick%20facts%20about%20the%20product%3A">📅 Book the Sprint</a></p>
+</div>
+
+<h2>Questions frequently asked</h2>
+<div class="faq">
+  <details><summary>Am I really in scope of Article 50?</summary>
+  <p>If your product has a chatbot or AI assistant that interacts with users, generates synthetic media, or uses emotion recognition, and you sell into the EU — yes. Article 50 has applied since 2 August 2026. The only grace period (2 December 2026) covers machine-readable marking for generative systems already on the market, and only on the provider side. The trigger in practice isn't the regulator: it's buyers sending the questionnaire before signing.</p></details>
+  <details><summary>Is this legal advice?</summary>
+  <p>No, and we don't pretend otherwise. TrustPage turns your statements about your product into documentary evidence: a memo, a register, disclosures and answers. You stay responsible for the facts — the pack is what you show a buyer, not an opinion you wave at a regulator.</p></details>
+  <details><summary>Where does the page live?</summary>
+  <p>On a hosted subdomain (yourbrand.trustpage.ai) — nothing to deploy, TLS included, link-ready for every security reply. The free plan carries a discreet "generated with TrustPage" mark; paid plans don't.</p></details>
+  <details><summary>We have no compliance person on the team.</summary>
+  <p>That's exactly who this is for. Most EU-facing SaaS are 1–50 people; the questionnaire doesn't care. The pack is written in plain language and takes about 2 hours of your time, once.</p></details>
+  <details><summary>What about the December marking deadline?</summary>
+  <p>The pack includes machine-readable marking guidance for generative output (Art. 50(2)) and the disclosure snippets to go in your product today — chatbot label, voice disclosure, AI-text label — so the visible side of compliance isn't a redesign project.</p></details>
+  <details><summary>Can I cancel?</summary>
+  <p>Yes — monthly, no commitment, cancel in one click from the Stripe payment page.</p></details>
+</div>
+
+<div class="card rv" id="start">
+  <h3 style="margin-top:0">Start now</h3>
+  <p>The exposure check above is free and takes 30 seconds. Paid plans start at $49/month, paid securely through Stripe. Prefer to talk first? We answer within 24 working hours:</p>
+  <p style="margin:18px 0"><a class="cta" href="https://buy.stripe.com/7sYaEQbC34i7g5H7fF3sI0s" rel="noopener" target="_blank">💳 Subscribe to Solo — $49/month</a></p>
+  <p class="hint">Problem paying or a question? Write to us — we reply within 24 working hours:</p>
+  <form id="signform" onsubmit="return signup(event)" style="margin-top:8px">
+    <label>Your email</label>
+    <input type="email" id="se" placeholder="you@yourcompany.com" required>
+    <label>Your product in one line</label>
+    <input type="text" id="sp" placeholder="B2B analytics with an AI assistant">
+    <label>AI features (chatbot, generative, other)</label>
+    <input type="text" id="sa" placeholder="Chatbot + AI-generated reports">
+    <button type="submit">I prefer to be contacted</button>
+  </form>
+</div>
+
+<div class="card rv">
+  <h3 style="margin-top:0">⭐ Customer reviews</h3>
+  <div id="reviews"></div>
+  <hr style="border-color:var(--line);margin:16px 0">
+  <p class="hint">You tested TrustPage? Leave a review (it goes straight to our team):</p>
+  <form id="revform" onsubmit="return sendReview(event)" style="margin-top:6px">
+    <label>Rating (1-5)</label>
+    <div class="stars-in" id="rv_stars" role="radiogroup" aria-label="Rating">
+      <button type="button" class="star" data-v="1" aria-label="1 star">☆</button>
+      <button type="button" class="star" data-v="2" aria-label="2 stars">☆</button>
+      <button type="button" class="star" data-v="3" aria-label="3 stars">☆</button>
+      <button type="button" class="star" data-v="4" aria-label="4 stars">☆</button>
+      <button type="button" class="star" data-v="5" aria-label="5 stars">☆</button>
+      <input type="hidden" id="rv_score" value="5">
+    </div>
+    <p class="hint" id="rv_star_hint">Click a star to fill it — 5 = excellent.</p>
+    <label>Your email</label>
+    <input type="email" id="rv_email" placeholder="you@yourcompany.com" required>
+    <label>Your comment</label>
+    <textarea id="rv_comment" rows="3" style="width:100%;background:#0d1116;border:1px solid var(--line);color:var(--fg);border-radius:8px;padding:10px" placeholder="What worked, what's missing…"></textarea>
+    <button type="submit">Send my review</button>
+  </form>
+</div>
+
+<footer>TrustPage AI — hosted EU AI Act compliance evidence for software teams. · <a href="mailto:nypsus.business@gmail.com" style="color:var(--mut)">Contact</a></footer>
+</main>
+<script>
+function money(n){return n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0})}
+function calc(){
+  var chat=document.getElementById('o_chat').classList.contains('on');
+  var gen=document.getElementById('o_gen').classList.contains('on');
+  var txt=document.getElementById('o_text').classList.contains('on');
+  var emo=document.getElementById('o_emo').classList.contains('on');
+  var rev=parseFloat(document.getElementById('rev').value)||0;
+  var eu=document.getElementById('eu').value==='1';
+  var out=document.getElementById('risk-out');
+  var any=chat||gen||txt||emo;
+  if(!eu||!any){out.style.display='none';return;}
+  var ob=[];
+  if(chat)ob.push('Art. 50(1) — tell users they are talking to an AI (chatbot disclosure)');
+  if(gen)ob.push('Art. 50(2) — machine-readable marking of AI-generated media (provider side; 2 Dec 2026 grace for systems already on the market)');
+  if(emo)ob.push('Art. 50(3) — inform people exposed to emotion recognition');
+  if(txt)ob.push('Art. 50(4) — disclose AI-generated text on public-interest topics');
+  var exposure=Math.min(15000000,0.03*rev);
+  document.getElementById('risk-total').textContent='up to '+money(exposure)+' potential exposure';
+  document.getElementById('risk-detail').innerHTML='Obligations that buyers will ask about:<ul>'+
+    ob.map(function(o){return '<li>'+o+'</li>';}).join('')+
+    '</ul><p style="margin-left:18px">Fines under Art. 99(4) go up to $15M or 3% of turnover — the questionnaire is how a buyer tests whether you can show evidence.</p>';
+  document.getElementById('risk-cta').innerHTML='That exposure, documented, for $49/month — <a class="cta" style="margin:8px 0 0" href="https://buy.stripe.com/7sYaEQbC34i7g5H7fF3sI0s" rel="noopener" target="_blank">Get the page + pack</a>';
+  out.style.display='block';
+}
+['o_chat','o_gen','o_text','o_emo'].forEach(function(id){
+  var el=document.getElementById(id);
+  function tog(){
+    var on=el.classList.toggle('on');
+    el.setAttribute('aria-checked',on?'true':'false');
+    calc();
+  }
+  el.addEventListener('click',tog);
+  el.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();tog();}});
+});
+document.getElementById('rev').addEventListener('input',calc);
+document.getElementById('eu').addEventListener('change',calc);
+calc();
+/* —————— clickable stars for reviews —————— */
+(function(){
+  var wrap=document.getElementById('rv_stars');
+  if(!wrap)return;
+  var input=document.getElementById('rv_score');
+  var stars=[].slice.call(wrap.querySelectorAll('.star'));
+  function paint(v){
+    stars.forEach(function(s){
+      s.textContent=parseInt(s.getAttribute('data-v'),10)<=v?'★':'☆';
+      s.classList.toggle('on', parseInt(s.getAttribute('data-v'),10)<=v);
+    });
+  }
+  stars.forEach(function(s){
+    s.addEventListener('click',function(){
+      input.value=s.getAttribute('data-v');
+      paint(parseInt(s.getAttribute('data-v'),10));
+    });
+    s.addEventListener('mouseenter',function(){
+      paint(parseInt(s.getAttribute('data-v'),10));
+      wrap.setAttribute('data-hover','1');
+    });
+  });
+  wrap.addEventListener('mouseleave',function(){
+    if(wrap.getAttribute('data-hover')==='1'){paint(parseInt(input.value,10)||5); wrap.setAttribute('data-hover','0');}
+  });
+  paint(parseInt(input.value,10)||5);
+})();
+function signup(ev){
+  ev.preventDefault();
+  var em=document.getElementById('se').value.trim();
+  var pr=document.getElementById('sp').value.trim();
+  var ai=document.getElementById('sa').value.trim();
+  var body='Hi,\n\nI want to start with TrustPage AI.\n\nEmail: '+em+'\nProduct: '+pr+'\nAI features: '+ai;
+  location.href='mailto:nypsus.business@gmail.com?subject='+encodeURIComponent('TrustPage AI — I want to be contacted')+'&body='+encodeURIComponent(body);
+  return false;
+}
+function sendReview(ev){
+  ev.preventDefault();
+  var s=document.getElementById('rv_score').value;
+  var e=document.getElementById('rv_email').value.trim();
+  var c=document.getElementById('rv_comment').value.trim();
+  if(!c){alert('Write your comment before sending.');return false;}
+  var body='Rating: '+s+'/5\nClient: '+e+'\n\n'+c;
+  location.href='mailto:nypsus.business@gmail.com?subject='+encodeURIComponent('TrustPage AI — Customer review ('+s+'/5)')+'&body='+encodeURIComponent(body);
+  return false;
+}
+/* Verified reviews (added after team review) */
+var REVIEWS=[];
+var rc=document.getElementById('reviews');
+if(REVIEWS.length===0){rc.innerHTML='<p class="hint">No published reviews yet — the first customers are arriving.</p>';}
+/* —————— scroll effects (progressive: nothing hides without JS) —————— */
+(function(){
+  var els=[].slice.call(document.querySelectorAll('.rv'));
+  if(!els.length)return;
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  els.forEach(function(el){
+    el.style.opacity='0';
+    el.style.transform='translateY(24px)';
+    el.style.transition='opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)';
+  });
+  var shown=0, ticking=false;
+  function check(){
+    ticking=false;
+    var vh=window.innerHeight||document.documentElement.clientHeight;
+    els.forEach(function(el){
+      if(el._shown)return;
+      var r=el.getBoundingClientRect();
+      if(r.top<vh-40 && r.bottom>0){
+        el.style.opacity='1';
+        el.style.transform='translateY(0)';
+        el._shown=true; shown++;
+      }
+    });
+    if(shown>=els.length)window.removeEventListener('scroll',onScroll);
+  }
+  function onScroll(){
+    if(!ticking){ticking=true; requestAnimationFrame(check);}
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  check();
+  setTimeout(function(){
+    els.forEach(function(el){
+      if(!el._shown){
+        el.style.opacity='1';
+        el.style.transform='translateY(0)';
+        el._shown=true;
+      }
+    });
+  }, 4000);
+})();
+</script>
+</body>
+</html>
