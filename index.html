@@ -6,69 +6,79 @@
 <title>TrustPage AI — Your EU buyer is asking about AI Act compliance. Send them a page.</title>
 <meta name="description" content="Article 50 of the EU AI Act applies since 2 August 2026. Get a public, defensible AI-compliance page and a ready-made answer pack for the questionnaires that now gate EU deals. From $49/month. 2 hours, this week.">
 <style>
-:root{--bg:#101418;--card:#161c22;--line:#26303a;--fg:#e8edf2;--mut:#9aa7b4;--acc:#ff8a3d;--ok:#3ddc97;--bad:#ff5d5d}
+:root{--bg:#0e141c;--bg2:#111a24;--card:#16202c;--line:#24344a;--fg:#eaf0f8;--mut:#97a7bd;--acc:#3d8bff;--acc2:#2b6fe0;--acc-soft:rgba(61,139,255,.12);--acc-glow:rgba(61,139,255,.28);--ok:#3ddc97;--bad:#ff5d5d}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--fg);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55;overflow-x:hidden}
-main{max-width:960px;margin:0 auto;padding:24px 18px 60px}
-header{text-align:center;padding:34px 0 8px}
-.eyebrow{display:inline-block;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:700;border:1px solid rgba(255,138,61,.35);border-radius:20px;padding:5px 14px;margin-bottom:10px}
-.logo{font-size:1.7rem;font-weight:800;letter-spacing:.5px}
+body{background:var(--bg);color:var(--fg);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.7;overflow-x:hidden}
+main{max-width:1024px;margin:0 auto;padding:40px 22px 80px}
+header{text-align:center;padding:44px 0 12px;position:relative;background:
+  radial-gradient(620px 320px at 50% -120px, rgba(61,139,255,.2), transparent 70%),
+  radial-gradient(420px 220px at 12% 8%, rgba(43,111,224,.12), transparent 70%)}
+.eyebrow{display:inline-block;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:700;border:1px solid rgba(61,139,255,.4);border-radius:20px;padding:5px 14px;margin-bottom:14px}
+.logo{font-size:1.8rem;font-weight:800;letter-spacing:.5px}
 .logo span{color:var(--acc)}
-h1{font-size:1.9rem;line-height:1.25;margin:14px 0 10px}
-h2{font-size:1.4rem;margin:30px 0 10px}
-h3{font-size:1.1rem;margin:16px 0 6px}
-p{color:var(--mut);margin:8px 0}
-.sub{font-size:1.04rem;max-width:680px;margin:0 auto}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0}
+h1{font-size:2.2rem;line-height:1.28;margin:16px 0 14px;font-weight:800}
+h2{font-size:1.6rem;margin:52px 0 8px;font-weight:800}
+h3{font-size:1.15rem;margin:18px 0 8px}
+p{color:var(--mut);margin:10px 0}
+.sub{font-size:1.06rem;max-width:720px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;margin:24px 0;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .acc{color:var(--acc);font-weight:700}
 .ok{color:var(--ok)}
 .bad{color:var(--bad)}
-.cta{display:inline-block;background:var(--acc);color:#101418;font-weight:800;border-radius:9px;padding:14px 24px;text-decoration:none;margin:12px 6px 6px 0;font-size:1.02rem;box-shadow:0 4px 18px rgba(255,138,61,.22);transition:transform .15s, box-shadow .15s}
-.cta:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(255,138,61,.38)}
+.cta{display:inline-block;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-weight:800;border-radius:10px;padding:15px 28px;text-decoration:none;margin:14px 8px 8px 0;font-size:1.02rem;box-shadow:0 6px 22px var(--acc-glow);transition:transform .15s, box-shadow .15s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(61,139,255,.42)}
 .cta.sec{background:transparent;border:1px solid var(--line);color:var(--fg);box-shadow:none}
-form{margin-top:14px}
-label{display:block;font-size:.9rem;color:var(--mut);margin:10px 0 4px}
-input,select{width:100%;background:#0d1116;border:1px solid var(--line);color:var(--fg);border-radius:8px;padding:10px 12px;font-size:1rem}
-button{background:var(--acc);color:#101418;border:none;border-radius:8px;padding:12px 18px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:12px}
+form{margin-top:16px}
+label{display:block;font-size:.9rem;color:var(--mut);margin:12px 0 5px}
+input,select,textarea{width:100%;background:#0d1520;border:1px solid var(--line);color:var(--fg);border-radius:10px;padding:12px 14px;font-size:1rem}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
+button{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border:none;border-radius:10px;padding:13px 20px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:14px}
 .hint{font-size:.82rem;color:var(--mut)}
-.step{display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:start;margin-top:16px}
+.step{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start;margin-top:20px}
 .step:first-child{margin-top:4px}
-.step .ico{width:56px;height:56px;border-radius:14px;background:#0d1116;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step b{display:block;color:var(--fg);margin-bottom:3px}
-.step span{font-size:.9rem;color:var(--mut)}
-.faq details{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px 16px;margin:10px 0}
+.step .ico{width:60px;height:60px;border-radius:16px;background:#0d1520;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step b{display:block;color:var(--fg);margin-bottom:4px;font-size:1.02rem}
+.step span{font-size:.92rem;color:var(--mut)}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 20px;margin:12px 0}
 .faq summary{font-weight:700;cursor:pointer}
-.faq p{margin-top:8px}
-.avis{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px 16px;margin:10px 0}
+.faq p{margin-top:10px}
+.avis{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 20px;margin:12px 0}
 .avis b{color:var(--fg)}
 .stars{color:#ffb400;letter-spacing:2px}
-footer{margin-top:40px;text-align:center;font-size:.82rem;color:var(--mut)}
+footer{margin-top:56px;text-align:center;font-size:.82rem;color:var(--mut)}
+/* ——— photos (libres de droits, stockées dans assets/) ——— */
+.photo{border-radius:18px;overflow:hidden;border:1px solid var(--line);margin:26px 0;position:relative}
+.photo img{width:100%;height:auto;display:block}
+.photo.dim::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(14,20,28,.72));pointer-events:none}
+.photo.cap::before{content:attr(data-cap);position:absolute;left:20px;bottom:16px;z-index:2;color:#eaf0f8;font-weight:700;font-size:.95rem;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.split .photo{margin:0}
 /* ——— démo : cartes, jamais de dépassement ——— */
-.optgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
-.opt{background:#0d1116;border:1px solid var(--line);border-radius:11px;padding:14px;cursor:pointer;transition:border-color .15s}
-.opt b{display:block;margin-bottom:4px;font-size:.95rem}
+.optgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0}
+.opt{background:#0d1520;border:1px solid var(--line);border-radius:13px;padding:16px;cursor:pointer;transition:border-color .15s,background .15s}
+.opt b{display:block;margin-bottom:5px;font-size:.96rem}
 .opt span{font-size:.8rem;color:var(--mut)}
-.opt.on{border-color:var(--acc);background:#201409}
-#risk-out{border:1px solid var(--acc);background:#201409;border-radius:12px;padding:16px;margin-top:16px;display:none;text-align:center}
+.opt.on{border-color:var(--acc);background:var(--acc-soft)}
+#risk-out{border:1px solid var(--acc);background:var(--acc-soft);border-radius:14px;padding:18px;margin-top:18px;display:none;text-align:center}
 #risk-total{font-size:1.5rem}
-#risk-detail{font-size:.95rem;margin-top:6px;color:var(--mut);text-align:left}
-#risk-detail li{margin:5px 0 5px 18px}
-.badge{display:inline-block;background:#1a4d36;color:var(--ok);border:1px solid #2a6b4c;border-radius:20px;padding:4px 12px;font-size:.8rem;font-weight:700}
+#risk-detail{font-size:.95rem;margin-top:8px;color:var(--mut);text-align:left}
+#risk-detail li{margin:6px 0 6px 18px}
+.badge{display:inline-block;background:#123b2b;color:var(--ok);border:1px solid #1e5a41;border-radius:20px;padding:4px 14px;font-size:.8rem;font-weight:700}
 /* ——— étoiles cliquables (avis clients) ——— */
-.stars-in{display:flex;gap:4px;margin:8px 0 4px}
-.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#3a4654;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in{display:flex;gap:4px;margin:10px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.8rem;line-height:1;color:#3a4a5f;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
 .stars-in .star:hover{transform:scale(1.15)}
 .stars-in .star.on{color:#ffb400}
 .stars-in .star:focus{outline:2px solid var(--acc);outline-offset:2px;border-radius:4px}
 /* ——— schémas (SVG authorés) ——— */
-.fig{border:1px solid var(--line);background:#0d1116;border-radius:14px;padding:8px;margin:18px 0 4px}
+.fig{border:1px solid var(--line);background:#0d1520;border-radius:16px;padding:10px;margin:20px 0 4px}
 .fig svg{width:100%;height:auto;display:block}
-.figcap{font-size:.78rem;color:var(--mut);text-align:center;margin:8px 0 2px}
-.herofig{margin:22px auto 6px;max-width:700px}
+.figcap{font-size:.78rem;color:var(--mut);text-align:center;margin:10px 0 2px}
+.herofig{margin:26px auto 8px;max-width:720px}
 /* ——— effets de scroll (progressive : tout reste visible sans JS) ——— */
 .rv{will-change:opacity,transform}
-@media(max-width:640px){h1{font-size:1.5rem}.optgrid{grid-template-columns:1fr}.step{grid-template-columns:48px 1fr;gap:12px}.step .ico{width:48px;height:48px}}
+@media(max-width:720px){h1{font-size:1.55rem}.optgrid{grid-template-columns:1fr}.step{grid-template-columns:50px 1fr;gap:12px}.step .ico{width:50px;height:50px}.split{grid-template-columns:1fr;gap:20px}}
 </style>
 </head>
 <body>
@@ -79,39 +89,24 @@ footer{margin-top:40px;text-align:center;font-size:.82rem;color:var(--mut)}
   <h1>An EU buyer just asked about your AI compliance.<br>What do you send them?</h1>
   <p class="sub">Since <b style="color:var(--fg)">2 August 2026</b>, Article 50 of the EU AI Act applies to any software with a chatbot, an AI assistant or AI-generated media touching the EU market — with fines up to <b style="color:var(--fg)">€15M or 3% of turnover</b>. Buyers now send an AI questionnaire before signing. <b style="color:var(--fg)">TrustPage gives you a public, defensible compliance page and a ready-made answer pack — this week.</b></p>
 
-  <div class="fig herofig rv">
-    <svg viewBox="0 0 700 240" role="img" aria-label="Schema: a buyer sends a 12-question AI Act questionnaire, the deal stalls, TrustPage turns it into a page plus an answer pack and the deal moves">
-      <rect width="700" height="240" rx="14" fill="#0b1016"/>
-      <rect width="700" height="240" rx="14" fill="none" stroke="#26303a"/>
-      <g font-family="Segoe UI,sans-serif">
-        <rect x="28" y="60" width="128" height="84" rx="10" fill="#161c22" stroke="#3a4654"/>
-        <text x="92" y="94" text-anchor="middle" font-size="22">🏢</text>
-        <text x="92" y="122" text-anchor="middle" font-size="11" fill="#9aa7b4">EU buyer</text>
-        <rect x="286" y="60" width="128" height="84" rx="10" fill="#161c22" stroke="#ff5d5d"/>
-        <text x="350" y="94" text-anchor="middle" font-size="22">📋</text>
-        <text x="350" y="122" text-anchor="middle" font-size="11" fill="#ff5d5d">12-question AI Act questionnaire · 10-day deadline</text>
-        <rect x="544" y="60" width="128" height="84" rx="10" fill="#161c22" stroke="#3a4654"/>
-        <text x="608" y="94" text-anchor="middle" font-size="22">🧑‍💻</text>
-        <text x="608" y="122" text-anchor="middle" font-size="11" fill="#9aa7b4">Your SaaS</text>
-      </g>
-      <path d="M156 102 L286 102" stroke="#ff5d5d" stroke-width="2" stroke-dasharray="6 5" fill="none"/>
-      <path d="M414 102 L544 102" stroke="#3a4654" stroke-width="2" stroke-dasharray="6 5" fill="none"/>
-      <text x="350" y="34" text-anchor="middle" font-size="12" font-weight="700" fill="#ff5d5d">deal stalls while you scramble for answers</text>
-      <rect x="128" y="172" width="444" height="46" rx="23" fill="#ff8a3d"/>
-      <text x="350" y="192" text-anchor="middle" font-size="13" font-weight="800" fill="#101418">TrustPage → hosted compliance page + answer pack</text>
-      <text x="350" y="210" text-anchor="middle" font-size="12" font-weight="800" fill="#101418">same deal, answered in 2 hours</text>
-    </svg>
-    <p class="figcap">The questionnaire is the new SOC 2: it gates the deal. The page and the pack are what unblocks it.</p>
+  <div class="photo dim cap" data-cap="The questionnaire is the new SOC 2: it gates the deal. The page and the pack are what unblocks it.">
+    <img src="assets/server.jpg" alt="Data center infrastructure — the hosted compliance page runs on managed infrastructure, nothing to deploy" loading="eager">
   </div>
 
   <p class="rv"><a class="cta" href="#demo">Check my exposure — free</a> <a class="cta sec" href="#pricing">See pricing</a></p>
 </header>
 
-<div class="card rv">
-  <b>Concrete example</b>
-  <p>Your EU prospect (€12M revenue, procurement-run) sends the standard 12-question AI Act questionnaire with a <b style="color:var(--fg)">10-day deadline</b>. No public page, no answers ready. Your team spends a week digging between sales calls; the deal slips a quarter.</p>
-  <p>Then the other option: a law firm quotes <b style="color:var(--fg)">$40,000</b> to "get you compliant" — for a two-person team. A founder in the same situation posted that quote and walked away.</p>
-  <p class="acc">TrustPage: $49/month, 2 hours of intake, and the same deal now has a page to link and answers to paste. Founders who do this once save ~8 hours on every deal after.</p>
+<div class="split">
+  <div class="rv">
+    <div style="font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:700;margin-bottom:6px">Concrete example</div>
+    <h3 style="margin-top:0">The $40,000 quote, removed from the deal.</h3>
+    <p>Your EU prospect (€12M revenue, procurement-run) sends the standard 12-question AI Act questionnaire with a <b style="color:var(--fg)">10-day deadline</b>. No public page, no answers ready. Your team spends a week digging between sales calls; the deal slips a quarter.</p>
+    <p>Then the other option: a law firm quotes <b style="color:var(--fg)">$40,000</b> to "get you compliant" — for a two-person team. A founder in the same situation posted that quote and walked away.</p>
+    <p class="acc">TrustPage: $49/month, 2 hours of intake, and the same deal now has a page to link and answers to paste. Founders who do this once save ~8 hours on every deal after.</p>
+  </div>
+  <div class="photo rv">
+    <img src="assets/meeting.jpg" alt="Two founders collaborating on a laptop in a modern office" loading="lazy">
+  </div>
 </div>
 
 <h2>How it works</h2>
@@ -119,8 +114,8 @@ footer{margin-top:40px;text-align:center;font-size:.82rem;color:var(--mut)}
   <div class="step">
     <div class="ico">
       <svg viewBox="0 0 48 48" width="34" height="34" role="img" aria-label="step 1: describe your product">
-        <rect x="8" y="10" width="32" height="28" rx="4" fill="none" stroke="#ff8a3d" stroke-width="2.4"/>
-        <path d="M8 18 L24 25 L40 18" fill="none" stroke="#ff8a3d" stroke-width="2.4"/>
+        <rect x="8" y="10" width="32" height="28" rx="4" fill="none" stroke="#3d8bff" stroke-width="2.4"/>
+        <path d="M8 18 L24 25 L40 18" fill="none" stroke="#3d8bff" stroke-width="2.4"/>
         <path d="M16 30 H 32" stroke="#9aa7b4" stroke-width="2.4"/>
       </svg>
     </div>
@@ -137,7 +132,7 @@ footer{margin-top:40px;text-align:center;font-size:.82rem;color:var(--mut)}
   <div class="step">
     <div class="ico">
       <svg viewBox="0 0 48 48" width="34" height="34" role="img" aria-label="step 3: you answer and link">
-        <rect x="8" y="8" width="32" height="32" rx="4" fill="none" stroke="#ff8a3d" stroke-width="2.4"/>
+        <rect x="8" y="8" width="32" height="32" rx="4" fill="none" stroke="#3d8bff" stroke-width="2.4"/>
         <path d="M16 20 L24 27 L34 15" fill="none" stroke="#3ddc97" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
@@ -145,7 +140,7 @@ footer{margin-top:40px;text-align:center;font-size:.82rem;color:var(--mut)}
   </div>
 </div>
 
-<div class="card rv">
+<div class="card rv" id="demo">
   <h2 style="margin-top:0">Free check — what do you owe an EU buyer?</h2>
   <p class="hint">Tick what your product does and put your revenue in. The exposure estimate updates live — it's the number that shows up in every buyer questionnaire.</p>
   <div class="optgrid">
@@ -183,22 +178,22 @@ footer{margin-top:40px;text-align:center;font-size:.82rem;color:var(--mut)}
     <svg viewBox="0 0 700 210" role="img" aria-label="Four deliverables: public compliance page, Article 50 memo, AI-system register, questionnaire answer pack">
       <rect width="700" height="210" rx="14" fill="#0b1016"/>
       <g font-family="Segoe UI,sans-serif">
-        <rect x="26" y="36" width="150" height="62" rx="10" fill="#161c22" stroke="#3a4654"/>
-        <text x="101" y="62" text-anchor="middle" font-size="12" fill="#e8edf2">🌐 Hosted page</text>
-        <text x="101" y="82" text-anchor="middle" font-size="10.5" fill="#9aa7b4">yourbrand.trustpage.ai</text>
-        <rect x="188" y="36" width="150" height="62" rx="10" fill="#161c22" stroke="#3a4654"/>
-        <text x="263" y="62" text-anchor="middle" font-size="12" fill="#e8edf2">📄 Art. 50 memo</text>
-        <text x="263" y="82" text-anchor="middle" font-size="10.5" fill="#9aa7b4">plain language, 2 pages</text>
-        <rect x="350" y="36" width="150" height="62" rx="10" fill="#161c22" stroke="#3a4654"/>
-        <text x="425" y="62" text-anchor="middle" font-size="12" fill="#e8edf2">🗂️ System register</text>
-        <text x="425" y="82" text-anchor="middle" font-size="10.5" fill="#9aa7b4">model card style</text>
-        <rect x="512" y="36" width="150" height="62" rx="10" fill="#161c22" stroke="#3a4654"/>
-        <text x="587" y="62" text-anchor="middle" font-size="12" fill="#e8edf2">📨 Answer pack</text>
-        <text x="587" y="82" text-anchor="middle" font-size="10.5" fill="#9aa7b4">12–50 Q mapped</text>
+        <rect x="26" y="36" width="150" height="62" rx="10" fill="#16202c" stroke="#3a4a5f"/>
+        <text x="101" y="62" text-anchor="middle" font-size="12" fill="#eaf0f8">🌐 Hosted page</text>
+        <text x="101" y="82" text-anchor="middle" font-size="10.5" fill="#97a7bd">yourbrand.trustpage.ai</text>
+        <rect x="188" y="36" width="150" height="62" rx="10" fill="#16202c" stroke="#3a4a5f"/>
+        <text x="263" y="62" text-anchor="middle" font-size="12" fill="#eaf0f8">📄 Art. 50 memo</text>
+        <text x="263" y="82" text-anchor="middle" font-size="10.5" fill="#97a7bd">plain language, 2 pages</text>
+        <rect x="350" y="36" width="150" height="62" rx="10" fill="#16202c" stroke="#3a4a5f"/>
+        <text x="425" y="62" text-anchor="middle" font-size="12" fill="#eaf0f8">🗂️ System register</text>
+        <text x="425" y="82" text-anchor="middle" font-size="10.5" fill="#97a7bd">model card style</text>
+        <rect x="512" y="36" width="150" height="62" rx="10" fill="#16202c" stroke="#3a4a5f"/>
+        <text x="587" y="62" text-anchor="middle" font-size="12" fill="#eaf0f8">📨 Answer pack</text>
+        <text x="587" y="82" text-anchor="middle" font-size="10.5" fill="#97a7bd">12–50 Q mapped</text>
       </g>
-      <path d="M350 112 L350 132" stroke="#3a4654" stroke-width="2"/>
-      <rect x="196" y="134" width="308" height="42" rx="21" fill="#ff8a3d"/>
-      <text x="350" y="153" text-anchor="middle" font-size="14" font-weight="800" fill="#101418">one link for every security reply</text>
+      <path d="M350 112 L350 132" stroke="#3a4a5f" stroke-width="2"/>
+      <rect x="196" y="134" width="308" height="42" rx="21" fill="#3d8bff"/>
+      <text x="350" y="153" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">one link for every security reply</text>
       <text x="350" y="190" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3ddc97">+ disclosure snippets you can put in the product today</text>
     </svg>
     <p class="figcap">Every subscription ships the page, the memo, the register and the answer pack — kept current when the rules change.</p>
@@ -264,7 +259,7 @@ footer{margin-top:40px;text-align:center;font-size:.82rem;color:var(--mut)}
 <div class="card rv">
   <h3 style="margin-top:0">⭐ Customer reviews</h3>
   <div id="reviews"></div>
-  <hr style="border-color:var(--line);margin:16px 0">
+  <hr style="border-color:var(--line);margin:18px 0">
   <p class="hint">You tested TrustPage? Leave a review (it goes straight to our team):</p>
   <form id="revform" onsubmit="return sendReview(event)" style="margin-top:6px">
     <label>Rating (1-5)</label>
@@ -280,7 +275,7 @@ footer{margin-top:40px;text-align:center;font-size:.82rem;color:var(--mut)}
     <label>Your email</label>
     <input type="email" id="rv_email" placeholder="you@yourcompany.com" required>
     <label>Your comment</label>
-    <textarea id="rv_comment" rows="3" style="width:100%;background:#0d1116;border:1px solid var(--line);color:var(--fg);border-radius:8px;padding:10px" placeholder="What worked, what's missing…"></textarea>
+    <textarea id="rv_comment" rows="3" style="width:100%;background:#0d1520;border:1px solid var(--line);color:var(--fg);border-radius:10px;padding:12px" placeholder="What worked, what's missing…"></textarea>
     <button type="submit">Send my review</button>
   </form>
 </div>
