@@ -79,11 +79,21 @@ footer{margin-top:56px;text-align:center;font-size:.82rem;color:var(--mut)}
 /* ——— effets de scroll (progressive : tout reste visible sans JS) ——— */
 .rv{will-change:opacity,transform}
 @media(max-width:720px){h1{font-size:1.55rem}.optgrid{grid-template-columns:1fr}.step{grid-template-columns:50px 1fr;gap:12px}.step .ico{width:50px;height:50px}.split{grid-template-columns:1fr;gap:20px}}
+/* ——— motion dernière génération (piloté par le scroll) ——— */
+#progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;pointer-events:none}
+#progress i{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--acc2),var(--acc));box-shadow:0 0 12px var(--acc-glow)}
+header>.hero-glow{position:absolute;inset:-30% 0 auto 0;height:170%;pointer-events:none;z-index:0;opacity:0;background:radial-gradient(470px 360px at var(--gx,50%) var(--gy,26%),rgba(61,139,255,.34),transparent 70%);transition:opacity .7s ease}
+header>*:not(.hero-glow){position:relative;z-index:1}
+.photo img{transform:translateY(var(--py,0px)) scale(var(--ps,1));will-change:transform}
+.rv{will-change:opacity,transform,clip-path}
+.count{font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
+<div id="progress" aria-hidden="true"><i></i></div>
 <main>
 <header>
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="eyebrow">EU AI Act · Article 50 in force · SaaS &amp; startups</div>
   <div class="logo">Trust<span>Page</span> AI</div>
   <h1>An EU buyer just asked about your AI compliance.<br>What do you send them?</h1>
@@ -92,7 +102,7 @@ footer{margin-top:56px;text-align:center;font-size:.82rem;color:var(--mut)}
     <img src="assets/server.jpg" alt="Data center infrastructure — the hosted compliance page runs on managed infrastructure, nothing to deploy" loading="eager">
   </div>
 
-  <p class="sub">Since <b style="color:var(--fg)">2 August 2026</b>, Article 50 of the EU AI Act applies to any software with a chatbot, an AI assistant or AI-generated media touching the EU market — with fines up to <b style="color:var(--fg)">€15M or 3% of turnover</b>. Buyers now send an AI questionnaire before signing. <b style="color:var(--fg)">TrustPage gives you a public, defensible compliance page and a ready-made answer pack — this week.</b></p>
+  <p class="sub">Since <b style="color:var(--fg)">2 August 2026</b>, Article 50 of the EU AI Act applies to any software with a chatbot, an AI assistant or AI-generated media touching the EU market — with fines up to <b style="color:var(--fg)"><span class="count" data-count="15" data-prefix="€" data-suffix="M">€15M</span> or <span class="count" data-count="3" data-suffix="%">3%</span> of turnover</b>. Buyers now send an AI questionnaire before signing. <b style="color:var(--fg)">TrustPage gives you a public, defensible compliance page and a ready-made answer pack — this week.</b></p>
 
   <p class="rv"><a class="cta" href="#demo">Check my exposure — free</a> <a class="cta sec" href="#pricing">See pricing</a></p>
 </header>
@@ -102,7 +112,7 @@ footer{margin-top:56px;text-align:center;font-size:.82rem;color:var(--mut)}
     <div style="font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:700;margin-bottom:6px">Concrete example</div>
     <h3 style="margin-top:0">The $40,000 quote, removed from the deal.</h3>
     <p>Your EU prospect (€12M revenue, procurement-run) sends the standard 12-question AI Act questionnaire with a <b style="color:var(--fg)">10-day deadline</b>. No public page, no answers ready. Your team spends a week digging between sales calls; the deal slips a quarter.</p>
-    <p>Then the other option: a law firm quotes <b style="color:var(--fg)">$40,000</b> to "get you compliant" — for a two-person team. A founder in the same situation posted that quote and walked away.</p>
+    <p>Then the other option: a law firm quotes <b style="color:var(--fg)"><span class="count" data-count="40000" data-prefix="$" data-sep="1">$40,000</span></b> to "get you compliant" — for a two-person team. A founder in the same situation posted that quote and walked away.</p>
     <p class="acc">TrustPage: $49/month, 2 hours of intake, and the same deal now has a page to link and answers to paste. Founders who do this once save ~8 hours on every deal after.</p>
   </div>
   <div class="photo rv">
@@ -209,13 +219,13 @@ footer{margin-top:56px;text-align:center;font-size:.82rem;color:var(--mut)}
   <p><a class="cta sec" href="#start">Start with the free page</a></p>
 </div>
 <div class="card rv">
-  <b>Solo — $49/month</b>
+  <b>Solo — <span class="count" data-count="49" data-prefix="$">$49</span>/month</b>
   <p>1 system: public page + subdomain, 2-page Article 50 memo, AI-system register, disclosure snippets, answer drafts for the standard questionnaires. Updated as guidance changes.</p>
   <p class="hint">For reference: a GRC platform for a 12-person SaaS runs $5k–$40k/year, and one law-firm quote for the same paperwork was $40,000. The page + pack is what the deal actually needs.</p>
   <p><a class="cta" href="https://buy.stripe.com/7sYaEQbC34i7g5H7fF3sI0s" rel="noopener" target="_blank">💳 Subscribe to Solo — $49/month</a></p>
 </div>
 <div class="card rv">
-  <b>Growth — $199/month</b>
+  <b>Growth — <span class="count" data-count="199" data-prefix="$">$199</span>/month</b>
   <p>Up to 5 systems, questionnaire autofill, evidence-room link for procurement, quarterly refresh, and AI-literacy training records for your customer-facing team (Art. 4).</p>
   <p><a class="cta" href="https://buy.stripe.com/14A9AM0XpeWLbPr8jJ3sI0t" rel="noopener" target="_blank">💳 Subscribe to Growth — $199/month</a></p>
 </div>
@@ -371,45 +381,125 @@ function sendReview(ev){
 var REVIEWS=[];
 var rc=document.getElementById('reviews');
 if(REVIEWS.length===0){rc.innerHTML='<p class="hint">No published reviews yet — the first customers are arriving.</p>';}
-/* —————— scroll effects (progressive: nothing hides without JS) —————— */
+/* —————— scroll engine: reveals by mask, parallax, counters, progress, hero light —————— */
 (function(){
-  var els=[].slice.call(document.querySelectorAll('.rv'));
-  if(!els.length)return;
-  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  els.forEach(function(el){
-    el.style.opacity='0';
-    el.style.transform='translateY(24px)';
-    el.style.transition='opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)';
-  });
-  var shown=0, ticking=false;
-  function check(){
-    ticking=false;
-    var vh=window.innerHeight||document.documentElement.clientHeight;
-    els.forEach(function(el){
-      if(el._shown)return;
-      var r=el.getBoundingClientRect();
-      if(r.top<vh-40 && r.bottom>0){
-        el.style.opacity='1';
-        el.style.transform='translateY(0)';
-        el._shown=true; shown++;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var docEl = document.documentElement;
+  var progress = document.getElementById('progress');
+  var bar = progress ? progress.firstElementChild : null;
+  var headerEl = document.querySelector('header');
+  var glow = headerEl ? headerEl.querySelector('.hero-glow') : null;
+  var photos = [].slice.call(document.querySelectorAll('.photo'));
+  var counters = [].slice.call(document.querySelectorAll('.count'));
+  var ticking = false;
+
+  function vh(){ return window.innerHeight || docEl.clientHeight; }
+  function fmt(el, v){
+    var dec = parseInt(el.getAttribute('data-dec') || '0', 10);
+    var s = el.getAttribute('data-sep') === '1'
+      ? v.toLocaleString('en-US', {maximumFractionDigits:dec})
+      : (dec ? v.toFixed(dec) : String(Math.round(v)));
+    return (el.getAttribute('data-prefix') || '') + s + (el.getAttribute('data-suffix') || '');
+  }
+  counters.forEach(function(el){ el._final = el.textContent; });
+  function runCounters(){
+    counters.forEach(function(el){
+      if(el._done) return;
+      var r = el.getBoundingClientRect();
+      if(r.top < vh() - 40 && r.bottom > 0){
+        el._done = true;
+        if(reduce){ el.textContent = el._final; return; }
+        var target = parseFloat(el.getAttribute('data-count')) || 0, t0 = null, dur = 1100;
+        (function step(ts){
+          if(t0 === null) t0 = ts;
+          var p = Math.min(1, (ts - t0) / dur);
+          var e = 1 - Math.pow(1 - p, 3);
+          el.textContent = fmt(el, target * e);
+          if(p < 1) requestAnimationFrame(step); else el.textContent = fmt(el, target);
+        })(t0 === null ? performance.now() : 0);
       }
     });
-    if(shown>=els.length)window.removeEventListener('scroll',onScroll);
+  }
+  function parallax(){
+    if(reduce) return;
+    var h = vh();
+    photos.forEach(function(f){
+      var img = f.querySelector('img'); if(!img) return;
+      var r = f.getBoundingClientRect();
+      var span = (r.height + h) / 2;
+      var c = Math.max(-1, Math.min(1, (r.top + r.height/2 - h/2) / (span || 1)));
+      img.style.setProperty('--py', (-c * 16).toFixed(2) + 'px');
+      img.style.setProperty('--ps', (1.06 - Math.abs(c) * 0.06).toFixed(3));
+    });
+  }
+  function heroLight(y){
+    if(!glow || reduce) return;
+    glow.style.opacity = Math.max(0, 0.9 - y / 650).toFixed(3);
   }
   function onScroll(){
-    if(!ticking){ticking=true; requestAnimationFrame(check);}
-  }
-  window.addEventListener('scroll',onScroll,{passive:true});
-  check();
-  setTimeout(function(){
-    els.forEach(function(el){
-      if(!el._shown){
-        el.style.opacity='1';
-        el.style.transform='translateY(0)';
-        el._shown=true;
-      }
+    if(ticking) return; ticking = true;
+    requestAnimationFrame(function(){
+      ticking = false;
+      var y = window.pageYOffset || docEl.scrollTop;
+      var max = docEl.scrollHeight - vh();
+      if(bar) bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+      heroLight(y);
+      parallax();
+      runCounters();
     });
-  }, 4000);
+  }
+
+  /* reveals: mask (clip-path) + staggered translate, grouped by parent */
+  var els = [].slice.call(document.querySelectorAll('.rv'));
+  if(!reduce && els.length){
+    els.forEach(function(el){
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.clipPath = 'inset(0 0 100% 0)';
+    });
+    var reveal = function(el, d){
+      el.style.transition = 'opacity .8s cubic-bezier(.2,.7,.2,1) ' + d + 'ms, transform .8s cubic-bezier(.2,.7,.2,1) ' + d + 'ms, clip-path .95s cubic-bezier(.2,.7,.2,1) ' + d + 'ms';
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+      el.style.clipPath = 'inset(0 0 0 0)';
+    };
+    if('IntersectionObserver' in window){
+      var groups = new Map();
+      els.forEach(function(el){
+        var p = el.parentElement;
+        if(!groups.has(p)) groups.set(p, []);
+        groups.get(p).push(el);
+      });
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(!en.isIntersecting) return;
+          var el = en.target;
+          var sib = groups.get(el.parentElement) || [];
+          var i = sib.indexOf(el);
+          reveal(el, Math.min(i * 90, 360));
+          io.unobserve(el);
+        });
+      }, {rootMargin:'0px 0px -8% 0px', threshold:0.12});
+      els.forEach(function(el){ io.observe(el); });
+      /* safety net: nothing stays hidden */
+      setTimeout(function(){ els.forEach(function(el){ if(el.style.opacity === '0') reveal(el, 0); }); }, 4000);
+    } else {
+      els.forEach(function(el){ reveal(el, 0); });
+    }
+  }
+
+  /* pointer light on the hero */
+  if(glow && headerEl && !reduce){
+    headerEl.addEventListener('pointermove', function(e){
+      var r = headerEl.getBoundingClientRect();
+      glow.style.setProperty('--gx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+      glow.style.setProperty('--gy', ((e.clientY - r.top) / Math.max(1, r.height) * 100).toFixed(1) + '%');
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
 })();
 </script>
 </body>
