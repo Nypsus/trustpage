@@ -87,6 +87,19 @@ header>*:not(.hero-glow){position:relative;z-index:1}
 .photo img{transform:translateY(var(--py,0px)) scale(var(--ps,1));will-change:transform}
 .rv{will-change:opacity,transform,clip-path}
 .count{font-variant-numeric:tabular-nums}
+/* ——— livrable : l'exemple visuel (images locales du pack) ——— */
+.proof{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:26px 0 4px;align-items:start}
+.proof figure{margin:0}
+.proof .photo{margin:0;background:#0d1520}
+.proof .figcap{text-align:left;margin:12px 2px 0}
+/* ——— scène qui glisse par-dessus la scène épinglée ——— */
+.overlay-scene{position:relative;z-index:2;background:var(--bg);border-radius:26px 26px 0 0;box-shadow:0 -30px 70px rgba(0,0,0,.55)}
+header{z-index:1}
+/* ——— Lenis (smooth scroll) ——— */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+@media(max-width:720px){.proof{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -120,8 +133,24 @@ header>*:not(.hero-glow){position:relative;z-index:1}
   </div>
 </div>
 
+<h2 id="deliverable">Exactly what you'll receive</h2>
+<div class="rv">
+  <p>Not a dashboard and not a checklist — finished documents you can send the same day. Below is the real shape of a pack, generated for a fictional EU SaaS (Acme Analytics: 12 people, B2B analytics, an in-app AI assistant).</p>
+</div>
+<div class="proof rv">
+  <figure>
+    <div class="photo"><img src="assets/deliverable-sample.png" alt="Example page 1 of the AI Act Article 50 compliance memo delivered to a customer" loading="lazy"></div>
+    <figcaption class="figcap">Page 1 — the Article 50 compliance memo: scope, systems declared, each obligation mapped to the measure taken and where the evidence lives, plus the disclosure snippets.</figcaption>
+  </figure>
+  <figure>
+    <div class="photo"><img src="assets/deliverable-sample-2.png" alt="Example page 2 of the pack: the AI-system register in model-card style and the questionnaire answer pack" loading="lazy"></div>
+    <figcaption class="figcap">Page 2 — the AI-system register (model-card style) and the questionnaire answer pack, written against the wording buyers actually use.</figcaption>
+  </figure>
+</div>
+<p class="hint rv">Example only: the pack you receive carries your product's own facts, systems and disclosures — the structure above is what stays the same. The hosted public page is generated from the same intake, so the answers and the page always match.</p>
+
 <h2>How it works</h2>
-<div class="card rv">
+<div class="card rv" id="how">
   <div class="step">
     <div class="ico">
       <svg viewBox="0 0 48 48" width="34" height="34" role="img" aria-label="step 1: describe your product">
@@ -151,6 +180,7 @@ header>*:not(.hero-glow){position:relative;z-index:1}
   </div>
 </div>
 
+<div class="overlay-scene">
 <div class="card rv" id="demo">
   <h2 style="margin-top:0">Free check — what do you owe an EU buyer?</h2>
   <p class="hint">Tick what your product does and put your revenue in. The exposure estimate updates live — it's the number that shows up in every buyer questionnaire.</p>
@@ -181,6 +211,7 @@ header>*:not(.hero-glow){position:relative;z-index:1}
     <p id="risk-detail" style="text-align:left"></p>
     <p class="acc" style="margin-top:10px" id="risk-cta">—</p>
   </div>
+</div>
 </div>
 
 <div class="card rv">
@@ -293,6 +324,9 @@ header>*:not(.hero-glow){position:relative;z-index:1}
 
 <footer>TrustPage AI — hosted EU AI Act compliance evidence for software teams. · <a href="mailto:nypsus.business@gmail.com" style="color:var(--mut)">Contact</a></footer>
 </main>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
 <script>
 function money(n){return n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0})}
 function calc(){
@@ -381,7 +415,7 @@ function sendReview(ev){
 var REVIEWS=[];
 var rc=document.getElementById('reviews');
 if(REVIEWS.length===0){rc.innerHTML='<p class="hint">No published reviews yet — the first customers are arriving.</p>';}
-/* —————— scroll engine: reveals by mask, parallax, counters, progress, hero light —————— */
+/* —————— moteur motion : GSAP + ScrollTrigger + Lenis (repli sans libs / reduced-motion) —————— */
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var docEl = document.documentElement;
@@ -391,7 +425,7 @@ if(REVIEWS.length===0){rc.innerHTML='<p class="hint">No published reviews yet �
   var glow = headerEl ? headerEl.querySelector('.hero-glow') : null;
   var photos = [].slice.call(document.querySelectorAll('.photo'));
   var counters = [].slice.call(document.querySelectorAll('.count'));
-  var ticking = false;
+  var hasLibs = !!(window.gsap && window.ScrollTrigger && window.Lenis);
 
   function vh(){ return window.innerHeight || docEl.clientHeight; }
   function fmt(el, v){
@@ -402,93 +436,21 @@ if(REVIEWS.length===0){rc.innerHTML='<p class="hint">No published reviews yet �
     return (el.getAttribute('data-prefix') || '') + s + (el.getAttribute('data-suffix') || '');
   }
   counters.forEach(function(el){ el._final = el.textContent; });
-  function runCounters(){
-    counters.forEach(function(el){
-      if(el._done) return;
-      var r = el.getBoundingClientRect();
-      if(r.top < vh() - 40 && r.bottom > 0){
-        el._done = true;
-        if(reduce){ el.textContent = el._final; return; }
-        var target = parseFloat(el.getAttribute('data-count')) || 0, t0 = null, dur = 1100;
-        (function step(ts){
-          if(t0 === null) t0 = ts;
-          var p = Math.min(1, (ts - t0) / dur);
-          var e = 1 - Math.pow(1 - p, 3);
-          el.textContent = fmt(el, target * e);
-          if(p < 1) requestAnimationFrame(step); else el.textContent = fmt(el, target);
-        })(t0 === null ? performance.now() : 0);
-      }
-    });
-  }
-  function parallax(){
-    if(reduce) return;
-    var h = vh();
-    photos.forEach(function(f){
-      var img = f.querySelector('img'); if(!img) return;
-      var r = f.getBoundingClientRect();
-      var span = (r.height + h) / 2;
-      var c = Math.max(-1, Math.min(1, (r.top + r.height/2 - h/2) / (span || 1)));
-      img.style.setProperty('--py', (-c * 16).toFixed(2) + 'px');
-      img.style.setProperty('--ps', (1.06 - Math.abs(c) * 0.06).toFixed(3));
-    });
-  }
-  function heroLight(y){
-    if(!glow || reduce) return;
-    glow.style.opacity = Math.max(0, 0.9 - y / 650).toFixed(3);
-  }
-  function onScroll(){
-    if(ticking) return; ticking = true;
-    requestAnimationFrame(function(){
-      ticking = false;
-      var y = window.pageYOffset || docEl.scrollTop;
-      var max = docEl.scrollHeight - vh();
-      if(bar) bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
-      heroLight(y);
-      parallax();
-      runCounters();
-    });
+  function countUp(el){
+    if(el._done) return;
+    el._done = true;
+    if(reduce){ el.textContent = el._final; return; }
+    var target = parseFloat(el.getAttribute('data-count')) || 0, t0 = null, dur = 1100;
+    (function step(ts){
+      if(t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(el, target * e);
+      if(p < 1) requestAnimationFrame(step); else el.textContent = fmt(el, target);
+    })(performance.now());
   }
 
-  /* reveals: mask (clip-path) + staggered translate, grouped by parent */
-  var els = [].slice.call(document.querySelectorAll('.rv'));
-  if(!reduce && els.length){
-    els.forEach(function(el){
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(22px)';
-      el.style.clipPath = 'inset(0 0 100% 0)';
-    });
-    var reveal = function(el, d){
-      el.style.transition = 'opacity .8s cubic-bezier(.2,.7,.2,1) ' + d + 'ms, transform .8s cubic-bezier(.2,.7,.2,1) ' + d + 'ms, clip-path .95s cubic-bezier(.2,.7,.2,1) ' + d + 'ms';
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-      el.style.clipPath = 'inset(0 0 0 0)';
-    };
-    if('IntersectionObserver' in window){
-      var groups = new Map();
-      els.forEach(function(el){
-        var p = el.parentElement;
-        if(!groups.has(p)) groups.set(p, []);
-        groups.get(p).push(el);
-      });
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(en){
-          if(!en.isIntersecting) return;
-          var el = en.target;
-          var sib = groups.get(el.parentElement) || [];
-          var i = sib.indexOf(el);
-          reveal(el, Math.min(i * 90, 360));
-          io.unobserve(el);
-        });
-      }, {rootMargin:'0px 0px -8% 0px', threshold:0.12});
-      els.forEach(function(el){ io.observe(el); });
-      /* safety net: nothing stays hidden */
-      setTimeout(function(){ els.forEach(function(el){ if(el.style.opacity === '0') reveal(el, 0); }); }, 4000);
-    } else {
-      els.forEach(function(el){ reveal(el, 0); });
-    }
-  }
-
-  /* pointer light on the hero */
+  /* pointer light on the hero — no libs needed, always on */
   if(glow && headerEl && !reduce){
     headerEl.addEventListener('pointermove', function(e){
       var r = headerEl.getBoundingClientRect();
@@ -497,9 +459,137 @@ if(REVIEWS.length===0){rc.innerHTML='<p class="hint">No published reviews yet �
     });
   }
 
-  window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', onScroll);
-  onScroll();
+  /* —————— repli : moteur historique (si les libs ne chargent pas, ou reduced-motion) —————— */
+  function fallback(){
+    function heroLight(y){
+      if(glow) glow.style.opacity = Math.max(0, 0.9 - y / 650).toFixed(3);
+    }
+    function parallax(){
+      if(reduce) return;
+      var h = vh();
+      photos.forEach(function(f){
+        var img = f.querySelector('img'); if(!img) return;
+        var r = f.getBoundingClientRect();
+        var span = (r.height + h) / 2;
+        var c = Math.max(-1, Math.min(1, (r.top + r.height/2 - h/2) / (span || 1)));
+        img.style.setProperty('--py', (-c * 16).toFixed(2) + 'px');
+        img.style.setProperty('--ps', (1.06 - Math.abs(c) * 0.06).toFixed(3));
+      });
+    }
+    function runCounters(){
+      counters.forEach(function(el){
+        if(el._done) return;
+        var r = el.getBoundingClientRect();
+        if(r.top < vh() - 40 && r.bottom > 0) countUp(el);
+      });
+    }
+    var ticking = false;
+    function onScroll(){
+      if(ticking) return; ticking = true;
+      requestAnimationFrame(function(){
+        ticking = false;
+        var y = window.pageYOffset || docEl.scrollTop;
+        var max = docEl.scrollHeight - vh();
+        if(bar) bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+        heroLight(y); parallax(); runCounters();
+      });
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  }
+
+  if(!hasLibs || reduce){ fallback(); return; }
+
+  /* —————— moteur GSAP + ScrollTrigger + Lenis —————— */
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* 1. Lenis : défilement fluide, branché sur le ticker GSAP */
+  var lenis = new Lenis({ duration: 1.05, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    var id = a.getAttribute('href');
+    if(id.length < 2) return;
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(id);
+      if(!t) return;
+      e.preventDefault();
+      lenis.scrollTo(t, { offset: -8 });
+    });
+  });
+
+  /* 2. barre de progression de page */
+  if(bar){
+    var setBar = function(self){ gsap.set(bar, {scaleX: self.progress, transformOrigin:'0 50%'}); };
+    ScrollTrigger.create({start:0, end:'max', onUpdate:setBar, onRefresh:setBar});
+  }
+
+  /* 3. scène hero : timeline scrubée — l'image zoome, le texte devient cinétique */
+  var heroImg = document.querySelector('header .photo img');
+  if(heroImg){
+    gsap.timeline({scrollTrigger:{trigger:'header', start:'top top', end:'bottom top', scrub:.6}})
+      .to(heroImg, {scale:1.14, yPercent:-6, ease:'none'}, 0)
+      .to('header h1', {y:-28, opacity:.32, ease:'none'}, 0)
+      .to('header .eyebrow, header .logo', {y:-12, opacity:.22, ease:'none'}, 0)
+      .to('header .sub', {y:-16, opacity:0, ease:'none'}, 0)
+      .to('header .cta', {y:-10, opacity:0, ease:'none'}, 0);
+  }
+  if(glow) gsap.fromTo(glow, {opacity:.85}, {opacity:0, ease:'none',
+    scrollTrigger:{trigger:'header', start:'top top', end:'40% top', scrub:true}});
+
+  /* 4. parallaxe scrubée des photos de contenu */
+  gsap.utils.toArray('.photo img').forEach(function(img){
+    if(img.closest('header')) return;
+    var box = img.closest('.photo');
+    gsap.fromTo(img, {yPercent:-3.5, scale:1.09}, {yPercent:3.5, scale:1.09, ease:'none',
+      scrollTrigger:{trigger:box, start:'top bottom', end:'bottom top', scrub:true}});
+  });
+
+  /* 5. révélations en cascade (masque + montée), regroupées par parent */
+  var rvs = gsap.utils.toArray('.rv');
+  if(rvs.length){
+    gsap.set(rvs, {opacity:0, y:26, clipPath:'inset(0 0 100% 0)'});
+    ScrollTrigger.batch(rvs, {
+      start:'top 88%',
+      onEnter:function(batch){
+        gsap.to(batch, {opacity:1, y:0, clipPath:'inset(0 0 0% 0)', duration:.85,
+          stagger:.09, ease:'power3.out', overwrite:true});
+      }
+    });
+    /* filet de sécurité : rien ne reste caché */
+    setTimeout(function(){
+      rvs.forEach(function(el){
+        if(getComputedStyle(el).opacity === '0'){
+          gsap.set(el, {opacity:1, y:0, clipPath:'inset(0 0 0% 0)'});
+        }
+      });
+    }, 6000);
+  }
+
+  /* 6. compteurs déclenchés à l'entrée */
+  counters.forEach(function(el){
+    ScrollTrigger.create({trigger:el, start:'top 92%', once:true, onEnter:function(){ countUp(el); }});
+  });
+
+  /* 7. scènes de bureau : carte épinglée + section qui glisse par-dessus */
+  ScrollTrigger.matchMedia({
+    '(min-width:861px)': function(){
+      var howCard = document.getElementById('how');
+      if(howCard){
+        var steps = howCard.querySelectorAll('.step');
+        gsap.timeline({scrollTrigger:{trigger:howCard, start:'top 20%', end:'+=120%',
+          pin:true, pinSpacing:true, scrub:.5}})
+          .fromTo(steps, {opacity:.2, y:16}, {opacity:1, y:0, duration:1, stagger:1, ease:'power2.out'});
+      }
+      var over = document.querySelector('.overlay-scene');
+      if(over){
+        gsap.from(over, {yPercent:7, scale:.985, ease:'none',
+          scrollTrigger:{trigger:over, start:'top bottom', end:'top 25%', scrub:.6}});
+      }
+    }
+  });
 })();
 </script>
 </body>

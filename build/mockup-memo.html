@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Acme Analytics — AI Act Article 50 Compliance Memo</title>
+<style>
+  :root{--ink:#16202c;--mut:#5a6b80;--line:#d5dde7;--acc:#2b6fe0;--accsoft:#eef4fe;--ok:#1e8f5f}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#f2f4f7}
+  .page{width:1240px;height:1754px;background:#fff;position:relative;padding:88px 96px 92px;font-family:'Segoe UI',Arial,sans-serif;color:var(--ink);overflow:hidden}
+  .hdr{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--ink);padding-bottom:16px}
+  .brand{font-size:26px;font-weight:800;letter-spacing:.5px}
+  .brand span{display:inline-block;width:13px;height:13px;background:var(--acc);border-radius:3px;margin-right:9px;vertical-align:middle;position:relative;top:-2px}
+  .brand small{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--mut);margin-top:6px;text-transform:uppercase;padding-left:22px}
+  .corp{text-align:right;font-size:11.5px;color:var(--mut);line-height:1.55}
+  .corp b{color:var(--ink);font-weight:700}
+  .title{margin:40px 0 0}
+  .title .kicker{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
+  .title h1{font-family:Georgia,'Times New Roman',serif;font-size:34px;line-height:1.18;font-weight:700;letter-spacing:-.2px}
+  .title h2{font-family:'Segoe UI',Arial,sans-serif;font-size:15.5px;font-weight:500;color:var(--mut);margin-top:12px;line-height:1.5}
+  .rule{height:4px;width:78px;background:var(--acc);border-radius:2px;margin:22px 0 0}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:30px 0 0;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .meta div{padding:11px 18px;font-size:12.5px;border-bottom:1px solid var(--line)}
+  .meta div:nth-child(odd){background:#fafbfd;border-right:1px solid var(--line);width:180px}
+  .meta div:nth-child(even){color:var(--ink);font-weight:600}
+  .meta div:nth-last-child(-n+2){border-bottom:0}
+  .meta .lbl{color:var(--mut);font-weight:600;text-transform:uppercase;font-size:10.5px;letter-spacing:.09em}
+  h3.sec{font-family:Georgia,serif;font-size:17.5px;font-weight:700;margin:20px 0 10px;display:flex;gap:12px;align-items:baseline}
+  h3.sec .n{font-family:'Segoe UI',sans-serif;font-size:13px;font-weight:800;color:var(--acc);min-width:26px}
+  p{font-size:13px;line-height:1.72;color:#33445a;margin-bottom:9px}
+  p b{color:var(--ink)}
+  table{width:100%;border-collapse:collapse;margin:9px 0 6px;font-size:11.8px}
+  caption{caption-side:top;text-align:left;font-size:10.5px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.09em;margin-bottom:6px}
+  th{background:var(--accsoft);color:var(--acc);text-align:left;font-weight:700;padding:9px 11px;border:1px solid var(--line);font-size:10.8px;text-transform:uppercase;letter-spacing:.05em}
+  td{padding:9px 11px;border:1px solid var(--line);vertical-align:top;line-height:1.5;color:#33445a}
+  tr:nth-child(even) td{background:#fafbfd}
+  td.k{font-weight:700;color:var(--ink)}
+  .pill{display:inline-block;font-size:9.8px;font-weight:700;padding:2px 8px;border-radius:20px;background:#e7f6ee;color:var(--ok);border:1px solid #bfe6d2;white-space:nowrap}
+  .pill.n{background:#eef1f5;color:#6a7a8e;border-color:#d5dde7}
+  .snip{border-left:3px solid var(--acc);background:#fafbfd;padding:11px 15px;margin:9px 0;border-radius:0 6px 6px 0;font-size:12.3px;color:#33445a;line-height:1.6}
+  .snip b{color:var(--ink);font-family:Consolas,monospace;font-size:11px}
+  .note{font-size:11px;color:var(--mut);line-height:1.6;margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+  .ftr{position:absolute;left:96px;right:96px;bottom:44px;display:flex;justify-content:space-between;font-size:10.5px;color:var(--mut);border-top:1px solid var(--line);padding-top:11px}
+  .ftr b{color:var(--acc);font-weight:700}
+  .pagination{position:absolute;right:96px;bottom:22px;font-size:10px;color:#93a1b3;letter-spacing:.06em}
+  .qbox{border:1px solid var(--line);border-radius:8px;padding:11px 16px;margin:6px 0;background:#fff}
+  .qbox .q{font-weight:700;color:var(--ink);font-size:12.4px;margin-bottom:6px}
+  .qbox .a{font-size:12.2px;color:#33445a;line-height:1.62}
+  .qbox .tag{float:right;font-size:9.5px;color:var(--mut);font-weight:700;letter-spacing:.06em}
+  .mark{color:var(--mut);font-size:11px}
+</style>
+</head>
+<body>
+<!-- ============ PAGE 1 — ARTICLE 50 COMPLIANCE MEMO ============ -->
+<div class="page" id="p1">
+  <div class="hdr">
+    <div class="brand"><span></span>ACME ANALYTICS<small>Compliance evidence</small></div>
+    <div class="corp">
+      <b>Acme Analytics SAS</b><br>
+      14 rue de la Fabrique, 75011 Paris, France<br>
+      EU establishment · VAT FR 40 812 559 231<br>
+      acme-analytics.eu
+    </div>
+  </div>
+
+  <div class="title">
+    <div class="kicker">Regulation (EU) 2024/1689 — Article 50</div>
+    <h1>AI Act — Article&nbsp;50<br>Compliance Memo</h1>
+    <h2>Transparency obligations for the <b>Acme Assistant</b> and <b>Report Writer</b> AI features</h2>
+    <div class="rule"></div>
+  </div>
+
+  <div class="meta">
+    <div class="lbl">Prepared for</div><div>Acme Analytics SAS — Legal &amp; Information Security</div>
+    <div class="lbl">Prepared by</div><div>TrustPage AI · compliance evidence service</div>
+    <div class="lbl">Reference</div><div>TP-ACM-2026-0847 · revision 3</div>
+    <div class="lbl">Date of issue</div><div>3 October 2026</div>
+    <div class="lbl">Systems covered</div><div>2 (of 3 declared) — see §2</div>
+    <div class="lbl">Classification</div><div>Confidential — for buyer due diligence</div>
+  </div>
+
+  <h3 class="sec"><span class="n">1</span>Purpose and scope</h3>
+  <p>This memo records how the AI features operated by <b>Acme Analytics SAS</b> meet the transparency duties of Article&nbsp;50 of the EU AI Act, in force since <b>2 August 2026</b>. It covers the AI systems that interact with end users or generate synthetic content in the course of Acme's B2B analytics product.</p>
+  <p>It is written to be attached to procurement and security replies. It states facts about the product as declared by Acme during intake; it is not legal advice and does not replace a conformity assessment.</p>
+
+  <h3 class="sec"><span class="n">2</span>AI systems in scope</h3>
+  <table>
+    <caption>Table 1 — systems declared and their Article 50 trigger</caption>
+    <thead><tr><th style="width:24%">System</th><th style="width:14%">Role</th><th style="width:38%">Article 50 trigger</th><th style="width:24%">Status</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Acme Assistant</td><td>Provider &amp; deployer</td><td>50(1) — natural persons must be informed they are interacting with an AI system</td><td><span class="pill">Implemented</span></td></tr>
+      <tr><td class="k">Report Writer</td><td>Provider</td><td>50(2) — synthetic text and charts must be marked in a machine-readable format</td><td><span class="pill">Implemented</span></td></tr>
+      <tr><td class="k">Sentiment panel</td><td>Deployer</td><td>50(3) — emotion recognition: persons exposed must be informed</td><td><span class="pill n">Not in use</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sec"><span class="n">3</span>Obligations, measures and evidence</h3>
+  <table>
+    <caption>Table 2 — measures in place and where the evidence lives</caption>
+    <thead><tr><th style="width:16%">Requirement</th><th style="width:44%">Measure taken</th><th style="width:40%">Evidence</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Art. 50(1)</td><td>Persistent "AI" label on the assistant panel and a first-turn disclosure message before any user input is answered.</td><td>Snippet CS-01 · hosted page Disclosures section · screenshot AS-04</td></tr>
+      <tr><td class="k">Art. 50(2)</td><td>Machine-readable marking (C2PA manifest + XMP metadata) on every exported report and chart; provenance retained for 12 months.</td><td>Register RS-02 · export sample EX-11</td></tr>
+      <tr><td class="k">Art. 50(4)</td><td>AI-generated summaries published on public-interest topics carry a visible label and an inline source note.</td><td>Snippet CS-03 · hosted page Disclosures section</td></tr>
+      <tr><td class="k">Art. 4</td><td>AI-literacy record: 12 staff trained on the assistant's limits and disclosure duties (11 Sep 2026).</td><td>Training log TR-2026-09</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sec"><span class="n">4</span>Disclosure snippets in use</h3>
+  <div class="snip"><b>CS-01</b> — <b>Acme Assistant:</b> “You are chatting with an AI assistant. Answers are generated automatically and may be inaccurate — verify anything you act on.”</div>
+  <div class="snip"><b>CS-02</b> — <b>Report Writer:</b> “This report was generated with AI assistance. A human analyst reviewed the figures before publication.”</div>
+  <div class="snip"><b>CS-03</b> — <b>Public summaries:</b> “AI-assisted summary — sources linked below. Reviewed by the Acme editorial team.”</div>
+
+  <p class="note">This memo is issued by TrustPage AI on the basis of Acme Analytics' intake declaration of 28 September 2026. Revisions are issued whenever a declared system, model or market changes. Current revision: 3.</p>
+
+  <div class="ftr"><span><b>TrustPage AI</b> — hosted EU AI Act compliance evidence</span><span>TP-ACM-2026-0847 · Confidential</span></div>
+  <div class="pagination">PAGE 1 OF 2</div>
+</div>
+
+<!-- ============ PAGE 2 — REGISTER + ANSWER PACK ============ -->
+<div class="page" id="p2">
+  <div class="hdr">
+    <div class="brand"><span></span>ACME ANALYTICS<small>AI-system register &amp; answer pack</small></div>
+    <div class="corp"><b>TrustPage AI</b><br>Evidence pack TP-ACM-2026-0847<br>Generated 3 October 2026</div>
+  </div>
+
+  <h3 class="sec" style="margin-top:34px"><span class="n">A</span>AI-system register</h3>
+  <table>
+    <caption>Register entry RS-01 — Acme Assistant</caption>
+    <thead><tr><th style="width:26%">Field</th><th>Entry</th></tr></thead>
+    <tbody>
+      <tr><td class="k">System name</td><td>Acme Assistant (in-app chat)</td></tr>
+      <tr><td class="k">Provider</td><td>Acme Analytics SAS — Paris, France</td></tr>
+      <tr><td class="k">Purpose</td><td>Answers product questions and drafts dashboard narratives for B2B customers</td></tr>
+      <tr><td class="k">Model</td><td>Third-party LLM (EU region endpoint) — no training on customer data</td></tr>
+      <tr><td class="k">Art. 50 role</td><td>50(1) inform users · deployer under 50(1)</td></tr>
+      <tr><td class="k">Last review</td><td>2 October 2026 · next 2 January 2027</td></tr>
+    </tbody>
+  </table>
+  <table>
+    <caption>Register entry RS-02 — Report Writer</caption>
+    <thead><tr><th style="width:26%">Field</th><th>Entry</th></tr></thead>
+    <tbody>
+      <tr><td class="k">System name</td><td>Report Writer (generative reporting)</td></tr>
+      <tr><td class="k">Provider</td><td>Acme Analytics SAS — Paris, France</td></tr>
+      <tr><td class="k">Purpose</td><td>Generates textual analysis and charts from customer metrics</td></tr>
+      <tr><td class="k">Marking</td><td>C2PA manifest + XMP metadata on all exports</td></tr>
+      <tr><td class="k">Art. 50 role</td><td>50(2) machine-readable marking (provider)</td></tr>
+      <tr><td class="k">Last review</td><td>2 October 2026 · next 2 January 2027</td></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <caption>Register entry RS-03 — Sentiment panel (retired)</caption>
+    <thead><tr><th style="width:26%">Field</th><th>Entry</th></tr></thead>
+    <tbody>
+      <tr><td class="k">System name</td><td>Sentiment panel (emotion recognition)</td></tr>
+      <tr><td class="k">Provider</td><td>Acme Analytics SAS — Paris, France</td></tr>
+      <tr><td class="k">Purpose</td><td>Estimated user sentiment from chat text (never deployed to EU customers)</td></tr>
+      <tr><td class="k">Art. 50 role</td><td>50(3) would apply if deployed — retirement documented 4 August 2026</td></tr>
+      <tr><td class="k">Status</td><td><span class="pill n">Retired · not in use</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sec"><span class="n">B</span>Questionnaire answer pack (extract)</h3>
+  <div class="qbox"><span class="tag">Q3 of 12</span><div class="q">Does your product use AI systems that interact with natural persons?</div><div class="a">Yes. The Acme Assistant answers user questions in-app. Users are informed of this on first use and by a persistent label (snippet CS-01). See hosted page Disclosures section and register entry RS-01.</div></div>
+  <div class="qbox"><span class="tag">Q4 of 12</span><div class="q">Are AI-generated outputs marked in a machine-readable way?</div><div class="a">Yes. Every exported report and chart carries a C2PA manifest and XMP metadata recording synthetic origin (register entry RS-02). A visible “AI-assisted” label is also shown.</div></div>
+  <div class="qbox"><span class="tag">Q7 of 12</span><div class="q">Do you operate emotion-recognition or biometric categorisation?</div><div class="a">No. The sentiment panel was retired in August 2026 and is not deployed for any EU customer. Declared as not in use in the register (entry RS-03).</div></div>
+  <div class="qbox"><span class="tag">Q10 of 12</span><div class="q">Where can we review your AI compliance evidence?</div><div class="a">Public page: acme-analytics.trustpage.ai — the memo, this register and the disclosure snippets are linked from there and refreshed as guidance changes.</div></div>
+
+  <h3 class="sec"><span class="n">C</span>Evidence index — what is in this pack</h3>
+  <table>
+    <caption>Documents issued with reference TP-ACM-2026-0847</caption>
+    <thead><tr><th style="width:20%">Reference</th><th style="width:52%">Document</th><th style="width:28%">Where it lives</th></tr></thead>
+    <tbody>
+      <tr><td class="k">MEMO-01</td><td>Article 50 Compliance Memo (2 pages)</td><td>Page 1 of this pack · hosted page</td></tr>
+      <tr><td class="k">REG-01..03</td><td>AI-system register, model-card style</td><td>Section A · hosted page</td></tr>
+      <tr><td class="k">CS-01..03</td><td>In-product disclosure snippets</td><td>Hosted page Disclosures section</td></tr>
+      <tr><td class="k">ANS-01</td><td>Questionnaire answer pack (12 questions)</td><td>Section B · reusable per deal</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ftr"><span><b>TrustPage AI</b> — hosted EU AI Act compliance evidence</span><span>TP-ACM-2026-0847 · Confidential</span></div>
+  <div class="pagination">PAGE 2 OF 2</div>
+</div>
+</body>
+</html>
